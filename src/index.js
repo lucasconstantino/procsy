@@ -1,21 +1,37 @@
 const { Command, flags } = require('@oclif/command')
+const proxy = require('./server')
 
 class ProcsyCommand extends Command {
   async run () {
-    const { flags } = this.parse(ProcsyCommand)
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from ./src/index.js`)
+    const {
+      flags: { target, port }
+    } = this.parse(ProcsyCommand)
+
+    proxy(target).listen(port, () => {
+      this.log(`\nProxy server listeting at http://localhost:${port}`)
+    })
   }
 }
 
 ProcsyCommand.description = 'Creates a local proxy server'
 
 ProcsyCommand.flags = {
-  // add --version flag to show CLI version
   version: flags.version({ char: 'v' }),
-  // add --help flag to show CLI documentation
   help: flags.help({ char: 'h' }),
-  name: flags.string({ char: 'n', description: 'name to print' })
+
+  target: flags.string({
+    char: 't',
+    description: 'Proxy target',
+    multiple: true,
+    parse: input => ['*'].concat(input.split(',')).slice(-2),
+    required: true
+  }),
+
+  port: flags.string({
+    char: 'p',
+    env: 'PORT',
+    default: '3001'
+  })
 }
 
 module.exports = ProcsyCommand
