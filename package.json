@@ -17,6 +17,7 @@
     "/bin",
     "/src"
   ],
+  "main": "src/index.js",
   "bin": {
     "procsy": "./bin/run"
   },

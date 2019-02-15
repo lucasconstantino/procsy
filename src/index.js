@@ -8,15 +8,12 @@ class ProcsyCommand extends Command {
   }
 }
 
-ProcsyCommand.description = `Describe the command here
-...
-Extra documentation goes here
-`
+ProcsyCommand.description = 'Creates a local proxy server'
 
 ProcsyCommand.flags = {
   // add --version flag to show CLI version
   version: flags.version({ char: 'v' }),
-  // add --help flag to show CLI version
+  // add --help flag to show CLI documentation
   help: flags.help({ char: 'h' }),
   name: flags.string({ char: 'n', description: 'name to print' })
 }
