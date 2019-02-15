@@ -29,7 +29,7 @@ To proxy subdomain based requests, you can specify source subdomains and their t
 
 ### 1. Single subdomain
 
-#### `hosts`:
+#### `/etc/hosts`:
 
 ```
 127.0.0.1 app.dev api.app.dev
@@ -50,7 +50,7 @@ procsy -t api,http://my-external-api.com
 
 ### 2. Multiple subdomains
 
-#### `hosts`:
+#### `/etc/hosts`:
 
 ```
 127.0.0.1 app.dev api.app.dev tracking.app.dev
@@ -72,7 +72,7 @@ procsy -t api,http://my-external-api.com tracking,http://analytics.com
 
 ### 3. Subdomain & domain
 
-#### `hosts`:
+#### `/etc/hosts`:
 
 ```
 127.0.0.1 app.dev api.app.dev
