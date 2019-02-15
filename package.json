@@ -1,22 +1,41 @@
 {
   "name": "procsy",
-  "description": "A proxy building helper with subdomain support",
   "version": "1.0.0",
+  "description": "A proxy building helper with subdomain support",
+  "keywords": [
+    "cli",
+    "oclif",
+    "proxy",
+    "subdomain"
+  ],
+  "homepage": "https://github.com/lucasconstantino/procsy",
+  "bugs": "https://github.com/lucasconstantino/procsy/issues",
+  "repository": "lucasconstantino/procsy",
+  "license": "MIT",
   "author": "Lucas Constantino Silva @lucasconstantino",
+  "files": [
+    "/bin",
+    "/src"
+  ],
+  "main": "index.js",
   "bin": {
     "procsy": "./bin/run"
   },
+  "scripts": {
+    "precommit": "lint-staged",
+    "test": "echo NO TESTS",
+    "posttest": "eslint ."
+  },
   "lint-staged": {
-    "package.json": [
-      "sort-package-json",
-      "git add"
-    ],
     "*.js": [
       "prettier-eslint --write",
       "git add"
+    ],
+    "package.json": [
+      "sort-package-json",
+      "git add"
     ]
   },
-  "bugs": "https://github.com/lucasconstantino/procsy/issues",
   "dependencies": {
     "@oclif/command": "^1",
     "@oclif/config": "^1",
@@ -37,25 +56,7 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "files": [
-    "/bin",
-    "/src"
-  ],
-  "homepage": "https://github.com/lucasconstantino/procsy",
-  "keywords": [
-    "oclif",
-    "proxy",
-    "subdomain",
-    "cli"
-  ],
-  "license": "MIT",
-  "main": "index.js",
   "oclif": {
     "bin": "procsy"
-  },
-  "repository": "lucasconstantino/procsy",
-  "scripts": {
-    "posttest": "eslint .",
-    "test": "echo NO TESTS"
   }
 }
