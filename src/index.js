@@ -1,4 +1,5 @@
 const { Command, flags } = require('@oclif/command')
+const chalk = require('chalk')
 const proxy = require('./server')
 
 class ProcsyCommand extends Command {
@@ -13,7 +14,21 @@ class ProcsyCommand extends Command {
   }
 }
 
-ProcsyCommand.description = 'Creates a local proxy server'
+ProcsyCommand.description = `Proxy server
+Creates a local proxy to configurable targets.`
+
+ProcsyCommand.usage = 'procsy -t http://google.com'
+
+ProcsyCommand.examples = `
+${chalk.dim('# Simple proxying')}
+$ procsy -t http://google.com
+
+${chalk.dim('# Subdomain proxying')}
+$ procsy -t api,http://my-external-api.com
+
+${chalk.dim('# Subdomain and domain proxying')}
+$ procsy -t api,http://my-external-api.com -t *,http://my-app.com
+`
 
 ProcsyCommand.flags = {
   version: flags.version({ char: 'v' }),
